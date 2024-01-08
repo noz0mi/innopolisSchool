@@ -1,7 +1,6 @@
 package javacourse.hometasks.homework5;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 public class TV {
     private String name;
@@ -62,26 +61,19 @@ public class TV {
     }
 
     // Включает выбранный канал
-    public void chooseChannel(boolean state) {
+    public void chooseChannel(int channel) throws RuntimeException {
         if (!this.state) {
-            System.out.println("Телевизор выключен, нужно сначала включить, чтобы выбрать канал, включаю телевизор...");
             changeState(this.state);
+            throw new RuntimeException("Телевизор выключен, нужно сначала включить, чтобы выбрать канал, включаю телевизор...");
         }
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Введите номер канала в пределах " + this.channels);
-        int channel = scan.nextInt();
-        boolean i = true;
-        while (i) {
-            if (channel > this.channels || channel < 1) {
-                System.out.println("Такого канала нет, выберите другой");
-                channel = scan.nextInt();
-            } else {
-                i = false;
-                System.out.println("Выбран канал номер " + channel);
-            }
+        if (channel > this.channels || channel < 1) {
+            throw new RuntimeException("Такого канала нет, выберите другой");
+        } else {
+            this.setCurrentChannel(channel);
         }
     }
 
+    @Override
     public String toString() {
         return "Телевизор с параметрами:\n" +
                 this.name + " - Наименование\n" +

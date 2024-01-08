@@ -26,6 +26,9 @@ public class App {
             tv.setVolume(volume);
             tvs[i] = tv;
         }
+        //выбор канала телевизора
+        TV channelChangeTV = tvs[3];
+        chooseChannel(channelChangeTV, scan);
 
         for (TV tv:tvs) {
             if (tv.isState() && tv.getVolume() <= maxVolume)
@@ -33,6 +36,27 @@ public class App {
         }
         sort(tvs);
     }
+
+    public static void chooseChannel(TV tv, Scanner scan) {
+        int channel = -1;
+        String channelChooseState = "ON";
+
+        while(channelChooseState.equals("OFF")) {
+            try {
+                System.out.println("Введите номер канала в пределах " + tv.getChannels());
+                channel = scan.nextInt();
+                tv.chooseChannel(channel);
+                System.out.println("Выбран канал номер " + tv.getCurrentChannel());
+            } catch (RuntimeException exception) {
+                System.err.println(exception.getMessage());
+            } finally {
+                scan.nextLine();
+                System.out.println("Продолжаем выбирать каналы? ON - да, OFF - нет");
+                channelChooseState = scan.nextLine();
+            }
+        }
+    }
+
 
     public static void sort (TV [] tvs) {
         for (TV tv:tvs) {

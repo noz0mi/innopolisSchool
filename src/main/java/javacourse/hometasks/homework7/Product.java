@@ -41,13 +41,13 @@ public class Product {
     }
 
     public void setName(String name) throws RuntimeException  {
-        if (name == "") {
+        if (name.equals("")) {
             throw new RuntimeException("Название не может быть пустой строкой!");
         }
         if (name.length() <= 3) {
             throw new RuntimeException("Название товара не может быть  меньше 3 символов!");
         }
-        if (name.matches("\\d") && !name.matches("[а-яА-я]")) {
+        if (name.matches("\\d+") && !name.matches("[а-яА-я]")) {
             throw new RuntimeException("Название товара не может состоять только из цифр");
         }
         this.name = name;

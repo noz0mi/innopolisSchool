@@ -30,7 +30,7 @@ private LocalDate expireDate;
         this.discount = discount;
     }
 
-    public Double discountCost (Double cost, Integer discount) {
+    public Double getDiscountCost (Double cost, Integer discount) {
         Double newcost = cost *  (100 - discount)/ 100;
         return newcost;
     }

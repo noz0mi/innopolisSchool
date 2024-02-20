@@ -30,8 +30,8 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         List<Product> productList = new ArrayList<>();
-        String flag0 = "";
-        while (!flag0.equals("END")) {
+        String stopScanningFlag = "";
+        while (!stopScanningFlag.equals("END")) {
             System.out.println("Введите название продукта и цену в формате: <Продукт> = <Цена>; " +
                     "или в формате: <Продукт> = <Цена>, %");
             String line0 = scanner.nextLine();
@@ -42,7 +42,7 @@ public class App {
                discountProduct.setName(productStr[0]);
                Double oldCost = Double.parseDouble(discProductStr[0].trim());
                discountProduct.setDiscount(Integer.parseInt(discProductStr[1].replace("%", "")));
-               Double newCost = discountProduct.discountCost(oldCost, discountProduct.getDiscount());
+               Double newCost = discountProduct.getDiscountCost(oldCost, discountProduct.getDiscount());
                discountProduct.setCost(newCost);
                productList.add(discountProduct);
             }
@@ -53,7 +53,7 @@ public class App {
                 productList.add(product);
             }
             System.out.println("Введите END, чтобы закончить ввод продуктов или нажмите Enter, чтобы продолжить");
-            flag0 = scanner.nextLine();
+            stopScanningFlag = scanner.nextLine();
         }
         System.out.println(productList);
         /* Для этой задачи не требуется вводить пользователей и совершать покупки

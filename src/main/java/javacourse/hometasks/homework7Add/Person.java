@@ -93,7 +93,7 @@ public class Person {
         }
     }
 
-    public void Buying (Product product) {
+    public void buyingProduct (Product product) {
         if (this.money < product.getCost())
             System.out.println(this.getName() + " не может позволить себе " + product.getName());
         else {

@@ -15,7 +15,7 @@ public class Child extends Person {
         }
     }
     @Override
-    public void Buying (Product product) {
+    public void buyingProduct (Product product) {
         if (this.getAge() < 6) {
             System.out.println("Ребёнок не может совершать покупки до 6 лет");
         }

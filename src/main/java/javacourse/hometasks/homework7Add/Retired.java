@@ -9,13 +9,13 @@ public class Retired  extends Person {
     }
     public Retired(String name, Double money, Integer age) throws RuntimeException {
         super(name, money, age);
-        if (age >= 65 ) {
+        if (age < 65 ) {
             throw new RuntimeException("Покупатель, которого вы хотите создать не относится к классу \" Пенсионер \". \n " +
                     "Возраст должен быть в рамках от 65 лет.");
         }
     }
     @Override
-    public void Buying (Product product) {
+    public void buyingProduct (Product product) {
         if (this.getMoney() < product.getCost())
             System.out.println(this.getName() + " не может позволить себе " + product.getName());
         else if (product instanceof DiscountProduct) {

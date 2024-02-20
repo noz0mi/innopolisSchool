@@ -107,6 +107,7 @@ public class App {
                 person.setMoney(Double.parseDouble(personStr[1]));
                 System.out.println("Введите true, если человек может брать в кредит, или false, если не может");
                 Boolean loanable = scanner.nextBoolean();
+                scanner.nextLine();
                 person.setLoanable(loanable);
                 personList.add(person);
             }
@@ -122,7 +123,7 @@ public class App {
             String[] personProduct = line2.split(" = ");
             Person newPerson = getPerson(personProduct[0], personList);
             Product newProduct = getProduct(personProduct[1], productList);
-            newPerson.Buying(newProduct);
+            newPerson.buyingProduct(newProduct);
             System.out.println("Введите END, чтобы закончить или нажмите Enter, чтобы продолжить");
             end = scanner.nextLine();
         }

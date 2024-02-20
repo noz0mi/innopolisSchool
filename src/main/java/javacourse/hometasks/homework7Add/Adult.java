@@ -24,7 +24,7 @@ public class Adult extends Person {
         this.loanable = loanable;
     }
     @Override
-    public void Buying (Product product) {
+    public void buyingProduct (Product product) {
         if (this.getMoney() < product.getCost() && !this.getLoanable())
             System.out.println(this.getName() + " не может позволить себе " + product.getName() + ", и не может покупать в кредит");
         else {
